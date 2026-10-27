@@ -19,6 +19,7 @@ namespace LoginUser.Models
         public string Password_Hash { get; set; } = string.Empty;
 
         [Required]
+        [Column("rol_id")]
         public int RolId { get; set; }
     }
 }
