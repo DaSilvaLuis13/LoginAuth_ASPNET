@@ -1,0 +1,63 @@
+﻿@page "/roles/create"
+@using Microsoft.EntityFrameworkCore
+@using LoginUser.Models
+@inject IDbContextFactory<LoginUser.Data.LoginUserContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>Roles</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Roles" OnValidSubmit="AddRoles" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <span class="text-danger">*</span>
+                <label for="nombre" class="form-label">Nombre:</label> 
+                <InputText id="nombre" @bind-Value="Roles.Nombre" class="form-control" aria-required="true"/> 
+                <ValidationMessage For="() => Roles.Nombre" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <span class="text-danger">*</span>
+                <label for="descripcion" class="form-label">Descripcion:</label> 
+                <InputText id="descripcion" @bind-Value="Roles.Descripcion" class="form-control" aria-required="true"/> 
+                <ValidationMessage For="() => Roles.Descripcion" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <span class="text-danger">*</span>
+                <label for="estado" class="form-label">Estado:</label> 
+                <InputCheckbox id="estado" @bind-Value="Roles.Estado" class="form-check-input" aria-required="true"/> 
+                <ValidationMessage For="() => Roles.Estado" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <span class="text-danger">*</span>
+                <label for="fechacreacion" class="form-label">FechaCreacion:</label> 
+                <InputDate id="fechacreacion" @bind-Value="Roles.FechaCreacion" class="form-control" aria-required="true"/> 
+                <ValidationMessage For="() => Roles.FechaCreacion" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/roles">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Roles Roles { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddRoles()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.Roles.Add(Roles);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/roles");
+    }
+}
