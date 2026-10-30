@@ -1,36 +1,71 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">LoginUser</a>
+        <a class="navbar-brand d-flex align-items-center gap-2 my-0" href="">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="30" height="24" fill="currentColor" aria-hidden="true">
+                <path d="M480 576L192 576C139 576 96 533 96 480L96 160C96 107 139 64 192 64L496 64C522.5 64 544 85.5 544 112L544 400C544 420.9 530.6 438.7 512 445.3L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L480 576zM192 448C174.3 448 160 462.3 160 480C160 497.7 174.3 512 192 512L448 512L448 448L192 448zM224 216C224 229.3 234.7 240 248 240L424 240C437.3 240 448 229.3 448 216C448 202.7 437.3 192 424 192L248 192C234.7 192 224 202.7 224 216zM248 288C234.7 288 224 298.7 224 312C224 325.3 234.7 336 248 336L424 336C437.3 336 448 229.3 448 216C448 298.7 437.3 288 424 288L248 288z" />
+            </svg>
+            <span class="fs-4 fw-bold">Library</span>
+        </a>
+
+       
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
+                <div class="nav-item">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">Home</NavLink>
+                </div>
+
+                <AuthorizeView Roles="1">
+                    <Authorized>
+                        <div class="nav-item">
+                            <NavLink class="nav-link" href="roles">Roles</NavLink>
+                        </div>
+                    </Authorized>
+                </AuthorizeView>
+
+                <AuthorizeView Roles="1">
+                    <Authorized>
+                        <div class="nav-item">
+                            <NavLink class="nav-link" href="usuarios">Usuarios</NavLink>
+                        </div>
+                    </Authorized>
+                </AuthorizeView>
+
+                <AuthorizeView Roles="1,2">
+                    <Authorized>
+                        <div class="nav-item">
+                            <NavLink class="nav-link" href="#">Quesitos</NavLink>
+                        </div>
+                    </Authorized>
+                </AuthorizeView>
+
+                <div class="nav-item">
+                    <NavLink class="nav-link" href="counter">
+                        <span>Counter</span>
+                    </NavLink>
+                </div>
+
+                <div class="nav-item">
+                    <NavLink class="nav-link" href="books">Books</NavLink>
+                </div>
+                <div class="nav-item">
+                    <NavLink class="nav-link" href="voices">Voices</NavLink>
+                </div>
+                <div class="nav-item">
+                    <NavLink class="nav-link" href="comics">Comics</NavLink>
+                </div>
+                <div class="nav-item">
+                    <NavLink class="nav-link" href="manga">Manga</NavLink>
+                </div>
+            </div>
+
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3 mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="login">Login</NavLink>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <span class="navbar-text text-light py-0">LoginUser</span>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="roles">
-				<span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Roles
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-			<NavLink class="nav-link" href="usuarios">
-				<span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Usuarios
-            </NavLink>
-		</div>
-    </nav>
-</div>
-
+</nav>
